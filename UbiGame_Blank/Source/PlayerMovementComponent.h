@@ -21,7 +21,7 @@ namespace Game
 			vy = 0.0;
 			ay = 1.0;
 			dx = 0.0;
-			vx = 4.0;
+			vx = 10.0;
 			lastframepressed = false;
 			g = 40.0;
 		}
