@@ -5,6 +5,7 @@
 #include "PlayerCameraComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+#include <SFML/Window/Keyboard.hpp>   //<-- Add the keyboard include in order to get keyboard inputs
 
 using namespace Game;
 
@@ -63,10 +64,10 @@ void GameBoard::CreateGround() {
 }
 
 void GameBoard::UpdatePlayerOrientation() {
-	dirA = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
+	lastframepressed = m_player->GetComponent<Game::PlayerMovementComponent>()->lastframepressed;
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	if (dirA > 0)
+	if (lastframepressed > 0)
 	{
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRun);

@@ -25,7 +25,7 @@ namespace Game
 		void UpdateGround(float dt);
 		void UpdatePlayerOrientation();
 		GameEngine::Entity* ground;
-		float dirA;
+		bool lastframepressed;
 	};
 }
 
