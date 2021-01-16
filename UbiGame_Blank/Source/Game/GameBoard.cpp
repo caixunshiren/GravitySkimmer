@@ -4,7 +4,7 @@
 #include "PlayerMovementComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
-
+#include <iostream>
 using namespace Game;
 
 GameBoard::GameBoard()
@@ -58,4 +58,29 @@ void GameBoard::CreateGround() {
 	spriteRender->SetFillColor(sf::Color::Transparent);
 	spriteRender->SetTexture(GameEngine::eTexture::Ground);
 	ground->AddComponent<GameEngine::CollidableComponent>();
+}
+
+void GameBoard::UpdateGround(float dt) {
+	static float obstacleSpeed = 100.f;
+
+	//for (std::vector<GameEngine::Entity*>::iterator it = m_obstacles.begin(); it != m_obstacles.end();)
+	//{
+		//GameEngine::Entity* ground = (*it);
+	  
+		sf::Vector2f currPos = ground->GetPos();
+		currPos.x -= obstacleSpeed * dt;
+		ground->SetPos(currPos);
+			//currPos.x -= obstacleSpeed * dt;
+		//obstacle->SetPos(currPos);
+		//If we are to remove ourselves
+		//if (currPos.x < -50.f)
+		//{
+		//	GameEngine::GameEngineMain::GetInstance()->RemoveEntity(obstacle);
+		//	it = m_obstacles.erase(it);
+		//}
+		//else
+		//{
+		//	it++;
+		//}
+	//}
 }

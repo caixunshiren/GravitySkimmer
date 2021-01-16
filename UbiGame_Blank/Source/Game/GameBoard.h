@@ -22,6 +22,8 @@ namespace Game
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
 		void CreateGround();
+		void UpdateGround(float dt);
+		GameEngine::Entity* ground;
 	};
 }
 
