@@ -25,5 +25,11 @@ namespace Game
 			lastframepressed = false;
 			g = 40.0;
 		}
+
+
+		int maxSpriteIndexRun = 3;
+		int m_lastSpriteIndex = 0;
+		float animationFrameRateTimerMax = 0.1f;
+		float animationFrameRateTimer = animationFrameRateTimerMax;
 	};
 }

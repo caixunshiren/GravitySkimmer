@@ -11,7 +11,7 @@ namespace GameEngine
 		enum type
 		{
 			None = -1,
-			Player, //<-- Add a new entry for our new texture
+			PlayerRun, //<-- Add a new entry for our new texture
 			Ground, //<-- ground texture
 			Count,
 		};
@@ -21,7 +21,7 @@ namespace GameEngine
 	{
 		switch (texture)
 		{
-		case eTexture::Player: return "circle.png"; //<-- The name of the image on disk
+		case eTexture::PlayerRun: return "Character-run.png"; //<-- The name of the image on disk
 		case eTexture::Ground: return "ground.png"; //<-- The name of the image on disk
 		}
 		return "UnknownTexType";
