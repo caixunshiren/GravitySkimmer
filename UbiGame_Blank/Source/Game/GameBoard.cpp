@@ -2,6 +2,7 @@
 
 #include "GameEngine/GameEngineMain.h"
 #include "PlayerMovementComponent.h"
+#include "PlayerCameraComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 //#include "GameEngine/EntitySystem/Components/Levelloader.h"
@@ -40,12 +41,13 @@ void GameBoard::CreatePlayer()
 	//Render
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 	
-	render->SetFillColor(sf::Color::Red);
-	render->SetTexture(GameEngine::eTexture::Player);  // <-- Assign the texture to this entity
+	render->SetFillColor(sf::Color::Transparent);
+	render->SetTexture(GameEngine::eTexture::PlayerRun);  // <-- Assign the texture to this entity
 	
 	//Movement
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
 	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
+	m_player->AddComponent <PlayerCameraComponent>();
 }
 
 void GameBoard::CreateGround() {

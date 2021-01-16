@@ -45,8 +45,20 @@ void TextureManager::UnLoadTextures()
 
 namespace TextureHelper
 {
-	sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture)
-	{
+	sf::Vector2f GetTextureTileSize(GameEngine::eTexture::type texture) {
+		switch (texture)
+		{
+		case GameEngine::eTexture::None:
+			break;
+		case GameEngine::eTexture::PlayerRun:  return sf::Vector2f(32.f, 32.f);
+			break;
+		case GameEngine::eTexture::Ground:
+			break;
+		case GameEngine::eTexture::Count:
+			break;
+		default:
+			break;
+		}
 		return sf::Vector2f(-1.f, -1.f);
 	}
 }

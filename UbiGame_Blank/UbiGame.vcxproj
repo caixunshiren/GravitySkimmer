@@ -163,6 +163,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     </PostBuildEvent>
   </ItemDefinitionGroup>
   <ItemGroup>
+    <ClCompile Include="PlayerCameraComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
@@ -185,6 +186,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\PlayerMovementComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
+    <ClInclude Include="PlayerCameraComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.h" />

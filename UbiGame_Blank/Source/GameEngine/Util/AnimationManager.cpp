@@ -31,6 +31,15 @@ void AnimationManager::InitStaticGameAnimations()
 	3)
 	);
 	*/
+	m_animDefinitions.push_back
+	(
+		SAnimationDefinition(
+			EAnimationId::PlayerRun,
+			eTexture::PlayerRun,
+			sf::Vector2i(0, 0),
+			3,
+			10)
+	);
 }
 
 

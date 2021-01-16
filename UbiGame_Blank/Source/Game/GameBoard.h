@@ -23,6 +23,8 @@ namespace Game
 		GameEngine::Entity* m_player;
 		void CreateGround();
 		float m_gridSize;
+		void UpdateGround(float dt);
+		GameEngine::Entity* ground;
 	};
 }
 
