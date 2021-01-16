@@ -20,7 +20,8 @@ GameBoard::~GameBoard()
 
 void GameBoard::Update()
 {	
-	
+	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	// UpdateGround(dt);
 }
 
 void GameBoard::CreatePlayer()
