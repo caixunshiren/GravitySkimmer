@@ -3,12 +3,14 @@
 #include "GameEngine/GameEngineMain.h"
 #include "PlayerMovementComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 
 using namespace Game;
 
 GameBoard::GameBoard()
 {
 	CreatePlayer();
+	CreateGround();
 }
 
 
@@ -40,4 +42,20 @@ void GameBoard::CreatePlayer()
 	
 	//Movement
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
+	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
+}
+
+void GameBoard::CreateGround() {
+	GameEngine::Entity* ground = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(ground);
+
+	ground->SetPos(sf::Vector2f(50.0f, 50.0f));
+	ground->SetSize(sf::Vector2f(50.0f, 50.0f));
+
+	// Render
+	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+		(ground->AddComponent<GameEngine::SpriteRenderComponent>());
+	spriteRender->SetFillColor(sf::Color::Transparent);
+	spriteRender->SetTexture(GameEngine::eTexture::Ground);
+	ground->AddComponent<GameEngine::CollidableComponent>();
 }
