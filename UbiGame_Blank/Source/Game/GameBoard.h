@@ -23,7 +23,9 @@ namespace Game
 		GameEngine::Entity* m_player;
 		void CreateGround();
 		void UpdateGround(float dt);
+		void UpdatePlayerOrientation();
 		GameEngine::Entity* ground;
+		float dirA;
 	};
 }
 
