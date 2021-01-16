@@ -206,6 +206,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\PlayerMovementComponent.h" />
   </ItemGroup>
   <ItemGroup>
+    <Image Include="Resources\circle.png" />
     <Image Include="Resources\Player.png" />
   </ItemGroup>
   <ItemGroup>

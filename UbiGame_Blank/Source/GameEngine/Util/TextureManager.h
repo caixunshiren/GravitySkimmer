@@ -12,7 +12,6 @@ namespace GameEngine
 		{
 			None = -1,
 			Player, //<-- Add a new entry for our new texture
-			AddYourTexturesEnumerationsHere, // Replace this for your own enumerations
 
 			Count,
 		};
@@ -22,7 +21,7 @@ namespace GameEngine
 	{
 		switch (texture)
 		{
-		case eTexture::Player: return "Player.png"; //<-- The name of the image on disk
+		case eTexture::Player: return "circle.png"; //<-- The name of the image on disk
 		}
 		return "UnknownTexType";
 	}

@@ -9,6 +9,8 @@ using namespace Game;
 void PlayerMovementComponent::Update() 
 {
 	Component::Update();
+    
+
 
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
@@ -16,6 +18,29 @@ void PlayerMovementComponent::Update()
     //By default the displacement is 0,0
     sf::Vector2f displacement{ 0.0f,0.0f };
 
+    //alternate gravity direction when space is pressed
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        if (lastframepressed == false) {
+            ay = ay * -1;
+            vy = 0;
+            dy = 0;
+            lastframepressed = true;
+        }
+        
+    }
+    else { lastframepressed = false; }
+
+    //update effect due to gravity
+    vy = vy + ay * g * dt;
+    dy = vy * dt;
+    displacement.y += dy;
+
+    //moving right
+    dx = vx * dt;
+    displacement.x += dx;
+
+    /*
     //The amount of speed that we will apply when input is received
     const float inputAmount = 100.0f;
 
@@ -38,6 +63,7 @@ void PlayerMovementComponent::Update()
     {
         displacement.y += inputAmount * dt;
     }
+    */
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
