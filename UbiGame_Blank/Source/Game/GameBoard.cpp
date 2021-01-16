@@ -67,13 +67,15 @@ void GameBoard::UpdatePlayerOrientation() {
 	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	if (this_dir > 0)
+	if (this_dir > 0 && last_dir < 0)
 	{
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRun);
 	}  // <-- Assign the texture to this entity
-	else {
+	else if(this_dir < 0 && last_dir > 0){
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
 	}
+
+	last_dir = this_dir;
 }
