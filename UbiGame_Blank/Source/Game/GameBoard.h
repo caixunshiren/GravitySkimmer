@@ -22,6 +22,7 @@ namespace Game
 		void CreatePlayer();
 		GameEngine::Entity* m_player;
 		void CreateGround();
+		float m_gridSize;
 	};
 }
 

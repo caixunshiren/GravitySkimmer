@@ -4,10 +4,13 @@
 #include "PlayerMovementComponent.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+//#include "GameEngine/EntitySystem/Components/Levelloader.h"
+
 
 using namespace Game;
 
 GameBoard::GameBoard()
+  : m_gridSize(50.f)
 {
 	CreatePlayer();
 	CreateGround();
