@@ -61,3 +61,18 @@ void GameBoard::CreateGround() {
 	spriteRender->SetTexture(GameEngine::eTexture::Ground);
 	ground->AddComponent<GameEngine::CollidableComponent>();
 }
+
+void GameBoard::UpdatePlayerOrientation() {
+	dirA = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
+	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
+
+	if (dirA > 0)
+	{
+		render->SetFillColor(sf::Color::Transparent);
+		render->SetTexture(GameEngine::eTexture::PlayerRun);
+	}  // <-- Assign the texture to this entity
+	else {
+		render->SetFillColor(sf::Color::Transparent);
+		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
+	}
+}
