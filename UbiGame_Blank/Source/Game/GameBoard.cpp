@@ -38,7 +38,7 @@ void GameBoard::CreatePlayer()
 
 	//Render
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
-	
+	last_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
 	render->SetFillColor(sf::Color::Transparent);
 	render->SetTexture(GameEngine::eTexture::PlayerRun);  // <-- Assign the texture to this entity
 	
@@ -64,10 +64,10 @@ void GameBoard::CreateGround() {
 }
 
 void GameBoard::UpdatePlayerOrientation() {
-	lastframepressed = m_player->GetComponent<Game::PlayerMovementComponent>()->lastframepressed;
+	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
 	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	if (lastframepressed > 0)
+	if (this_dir > 0)
 	{
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRun);
