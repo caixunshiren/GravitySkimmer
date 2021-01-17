@@ -30,13 +30,13 @@ void PlayerMovementComponent::Update()
     PlayerControl();
     animateByState();
 
-    
+    //check_state();
 }
 
 void PlayerMovementComponent::check_state() {
     sf::Vector2f cur_p = GetEntity()->GetPos();
     float cur_y = cur_p.y;
-    float delta = 0.5;
+    float delta = 0.05;
     if (abs(cur_y - last_y) < delta) { 
         if (ay > 0) { state = 1; }
 
@@ -138,11 +138,13 @@ void PlayerMovementComponent::PlayerControl() {
     //alternate gravity direction when space is pressed
     if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
     {
-        if (lastframepressed == false) {
+        if (lastframepressed == false && state != 4 && state != 3) {
             ay = ay * -1;
             vy = 0;
             dy = 0;
             lastframepressed = true;
+            
+
         }
 
     }
@@ -151,14 +153,16 @@ void PlayerMovementComponent::PlayerControl() {
     //update effect due to gravity
     vy = vy + ay * g * dt;
     dy = vy * dt;
-    displacement.y += dy;
 
+    displacement.y += dy;
     //moving right
     dx = vx * dt;
     displacement.x += dx;
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+
+
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}
