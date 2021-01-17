@@ -16,7 +16,7 @@ using namespace Game;
 
 GameBoard::GameBoard()
 	: m_gridSize(32.f)
-	, LoadingTime(2.f)
+	, LoadingTime(30.f)
 {
 	Levelloader::GetInstance()->LoadLevel(this);
 	
