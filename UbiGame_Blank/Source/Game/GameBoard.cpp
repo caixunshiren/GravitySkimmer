@@ -73,7 +73,7 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 
 	GameEngine::SoundComponent* const soundComponent = m_player->AddComponent<GameEngine::SoundComponent>();
 	GameEngine::SoundManager::SoundId bgm = soundComponent->LoadSoundFromFile("Resources/snd/bgm.wav");
-	soundComponent->PlaySound(bgm, false);
+	soundComponent->PlaySound(bgm);
 
 }
 
