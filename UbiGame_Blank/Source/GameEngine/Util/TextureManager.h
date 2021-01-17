@@ -15,6 +15,7 @@ namespace GameEngine
 			PlayerRunFlip,
 			Ground, //<-- ground texture
 			backWall,
+			spike,
 			level,
 			Count,
 		};
@@ -27,8 +28,9 @@ namespace GameEngine
 		case eTexture::PlayerRun: return "Character-combined.png"; //<-- The name of the image on disk
 		case eTexture::PlayerRunFlip: return "Character-run-flip.png"; //<-- The name of the image on disk
 		case eTexture::Ground: return "ground.png"; //<-- The name of the image on disk
-		case eTexture::level: return "level.jpeg"; //<-- The name of the image on disk
+		case eTexture::level: return "level.png"; //<-- The name of the image on disk
 		case eTexture::backWall: return "backwall.png"; //<-- The name of the image on disk
+		case eTexture::spike: return "spike-long.png";
 		}
 		return "UnknownTexType";
 	}

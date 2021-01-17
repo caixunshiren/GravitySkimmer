@@ -35,6 +35,8 @@ void CollidablePhysicsComponent::Update()
 {
 	//For the time being just a simple intersection check that moves the entity out of all potential intersect boxes
 	std::vector<CollidableComponent*>& collidables = CollisionManager::GetInstance()->GetCollidables();
+	m_didCollide = false;
+	m_lastCollideEntity = false;
 
 	for (int a = 0; a < collidables.size(); ++a)
 	{
@@ -63,7 +65,16 @@ void CollidablePhysicsComponent::Update()
 					pos.y += intersection.height;
 			}
 
-			GetEntity()->SetPos(pos);
+			if (colComponent->GetEntity()->GetEntityType() == EEntityType::spike) {
+				m_didCollide = true;
+				m_lastCollideEntity = colComponent->GetEntity();
+				GetEntity()->SetPos(pos);
+			}
+
+		    if (colComponent->GetEntity()->GetEntityType() == EEntityType::ground) {
+				GetEntity()->SetPos(pos);
+			}
+
 		}
 	}
 }
