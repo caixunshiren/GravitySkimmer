@@ -20,6 +20,7 @@ namespace Game
 		void CreateSpike(sf::Vector2i coords);
 		void CreateSpikeFliped(sf::Vector2i coords);
 
+		void CreateBackground();
 		void Update();		
 		bool IsGameOver() { return false; }
 

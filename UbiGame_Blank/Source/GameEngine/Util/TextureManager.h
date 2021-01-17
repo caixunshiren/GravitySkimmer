@@ -34,7 +34,7 @@ namespace GameEngine
 		case eTexture::backWall: return "backwall.png"; //<-- The name of the image on disk
 		case eTexture::spike: return "spike-long.png";
 		case eTexture::spikeFlip: return "spike-long-flip.png";
-		case eTexture::Background: return "spike-long.png";
+		case eTexture::Background: return "Background.png";
 		}
 		return "UnknownTexType";
 	}
