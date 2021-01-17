@@ -11,6 +11,7 @@ namespace Game
 		void animateByState();
 		void PlayerControl();
 		void check_state();
+		void CollideSpike();
 		float dy;
 		float vy;
 		float ay;

@@ -72,6 +72,7 @@ void CollidablePhysicsComponent::Update()
 			}
 
 		    if (colComponent->GetEntity()->GetEntityType() == EEntityType::ground) {
+				m_didCollide = true;
 				GetEntity()->SetPos(pos);
 			}
 

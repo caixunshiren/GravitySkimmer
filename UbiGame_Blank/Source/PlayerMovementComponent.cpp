@@ -30,27 +30,26 @@ void PlayerMovementComponent::Update()
     check_state();
 
     PlayerControl();
+    CollideSpike();
     animateByState();
 
     //check_state();
 }
 
 void PlayerMovementComponent::check_state() {
-    sf::Vector2f cur_p = GetEntity()->GetPos();
-    float cur_y = cur_p.y;
-    float delta = 0.05;
-    if (abs(cur_y - last_y) < delta) { 
-        if (ay > 0) { state = 1; }
+    GameEngine::CollidablePhysicsComponent* colPhys = GetEntity()->GetComponent<GameEngine::CollidablePhysicsComponent>();
+    if (colPhys->DidCollide()) {
+        if (ay > 0) { state = 1;             vy = 0;
+        }
 
-        else if (ay < 0) { state = 2; }
+        else if (ay < 0) { state = 2;             vy = 0;
+        }
     }
     else {
         if (ay > 0) { state = 3; }
 
         else if (ay < 0) { state = 4; }
     }
-
-    last_y = cur_y;
 }
 
 void PlayerMovementComponent::animateByState() {
@@ -156,6 +155,8 @@ void PlayerMovementComponent::PlayerControl() {
     vy = vy + ay * g * dt;
     dy = vy * dt;
 
+
+
     displacement.y += dy;
     //moving right
     dx = vx * dt;
@@ -164,14 +165,19 @@ void PlayerMovementComponent::PlayerControl() {
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+
+    
+    
+    
+}
+
+void PlayerMovementComponent::CollideSpike() {
     GameEngine::CollidablePhysicsComponent* colPhys = GetEntity()->GetComponent<GameEngine::CollidablePhysicsComponent>();
     if (colPhys->DidCollide() && colPhys->GetLastCollideEntity() != nullptr) {
         std::cout << "Player destroyed" << std::endl;
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
         //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->GetLastCollideEntity());
     }
-    
-    
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}
