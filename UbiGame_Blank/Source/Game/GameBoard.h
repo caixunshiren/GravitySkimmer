@@ -18,6 +18,7 @@ namespace Game
 		void CreateGround(sf::Vector2i coords);
 		void CreateBackWall(sf::Vector2i coords);
 		void CreateSpike(sf::Vector2i coords);
+
 		void Update();		
 		bool IsGameOver() { return false; }
 
