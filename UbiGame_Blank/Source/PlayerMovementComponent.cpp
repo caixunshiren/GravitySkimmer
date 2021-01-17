@@ -8,6 +8,8 @@
 
 #include <iostream>// dubug
 
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+
 using namespace Game;
 
 
@@ -18,60 +20,18 @@ void PlayerMovementComponent::Update()
 	Component::Update();
     
 
+    check_state();
 
-    //Grabs how much time has passed since last frame
-    const float dt = GameEngine::GameEngineMain::GetTimeDelta();
-
-    //By default the displacement is 0,0
-    sf::Vector2f displacement{ 0.0f,0.0f };
-
-    //alternate gravity direction when space is pressed
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
-    {
-        if (lastframepressed == false) {
-            ay = ay * -1;
-            vy = 0;
-            dy = 0;
-            lastframepressed = true;
-        }
-        
-    }
-    else { lastframepressed = false; }
-
-    //update effect due to gravity
-    vy = vy + ay * g * dt;
-    dy = vy * dt;
-    displacement.y += dy;
-
-    //moving right
-    dx = vx * dt;
-    displacement.x += dx;
-
-    /*//Update Sprite
-    if (animationFrameRateTimer < 0) {
-        m_lastSpriteIndex++;
-        animationFrameRateTimer = animationFrameRateTimerMax;
-    }
-    else {
-        animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
-    }
-
-    if (m_lastSpriteIndex > maxSpriteIndexRun) {
-        m_lastSpriteIndex = 0;
-    }
-
-    GameEngine::SpriteRenderComponent* spriterender = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
-    if (spriterender) {
-        spriterender->SetTileIndex(sf::Vector2i(m_lastSpriteIndex, 0));
-    }
-    */
-
+    PlayerControl();
     animateByState();
 
-
-    //Update the entity position
-    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
     
+}
+
+void PlayerMovementComponent::check_state() {
+    GameEngine::CollidablePhysicsComponent* hitbox = GetEntity()->GetComponent<GameEngine::CollidablePhysicsComponent>();
+
+
 }
 
 void PlayerMovementComponent::animateByState() {
@@ -149,6 +109,39 @@ void PlayerMovementComponent::animateByState() {
 
     }
 
+}
+
+void PlayerMovementComponent::PlayerControl() {
+    //Grabs how much time has passed since last frame
+    const float dt = GameEngine::GameEngineMain::GetTimeDelta();
+
+    //By default the displacement is 0,0
+    sf::Vector2f displacement{ 0.0f,0.0f };
+
+    //alternate gravity direction when space is pressed
+    if (sf::Keyboard::isKeyPressed(sf::Keyboard::Space))
+    {
+        if (lastframepressed == false) {
+            ay = ay * -1;
+            vy = 0;
+            dy = 0;
+            lastframepressed = true;
+        }
+
+    }
+    else { lastframepressed = false; }
+
+    //update effect due to gravity
+    vy = vy + ay * g * dt;
+    dy = vy * dt;
+    displacement.y += dy;
+
+    //moving right
+    dx = vx * dt;
+    displacement.x += dx;
+
+    //Update the entity position
+    GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}

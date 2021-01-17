@@ -9,6 +9,8 @@ namespace Game
 		virtual void Update() override;
 		virtual void OnAddToWorld() override;
 		void animateByState();
+		void PlayerControl();
+		void check_state();
 		float dy;
 		float vy;
 		float ay;
@@ -33,7 +35,7 @@ namespace Game
 			vx = 100.0;
 			lastframepressed = false;
 			g = 340.0;
-			state = 4;
+			state = 1;
 			s1 = 0;
 			s2 = 4;
 			s3 = 8;

@@ -50,8 +50,6 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
 	m_player->AddComponent <PlayerCameraComponent>();
 
-	//get some important info
-	last_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
 }
 
 
@@ -74,21 +72,3 @@ void Game::GameBoard::CreateGround(sf::Vector2i coords)
 	ground->AddComponent<GameEngine::CollidableComponent>();
 }
 
-void GameBoard::UpdatePlayerOrientation() {
-	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
-	GameEngine::SpriteRenderComponent* render = m_player->GetComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
-
-	if (this_dir > 0 && last_dir < 0)
-	{
-		//render->SetFillColor(sf::Color::Transparent);
-		render->SetTexture(GameEngine::eTexture::PlayerRun);
-		//std::cout << 1;
-	}  // <-- Assign the texture to this entity
-	else if(this_dir < 0 && last_dir > 0){
-		//render->SetFillColor(sf::Color::Transparent);
-		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
-		//std::cout << 2;
-	}
-	//std::cout << this_dir;
-	last_dir = this_dir;
-}
