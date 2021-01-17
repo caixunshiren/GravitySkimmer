@@ -32,11 +32,11 @@ namespace GameEngine
 		case eTexture::PlayerRunFlip: return "Character-run-flip.png"; //<-- The name of the image on disk
 		case eTexture::Ground: return "grass-surface.png"; //<-- The name of the image on disk
 		case eTexture::dirt: return "dirt.png"; //<-- The name of the image on disk
-		case eTexture::level: return "level.png"; //<-- The name of the image on disk
+		case eTexture::level: return "level_final.png"; //<-- The name of the image on disk
 		case eTexture::backWall: return "backwall.png"; //<-- The name of the image on disk
 		case eTexture::spike: return "woodSpike.png";
 		case eTexture::spikeFlip: return "woodSpikeFlip.png";
-		case eTexture::Background: return "Background.png";
+		case eTexture::Background: return "Background3.png";
 		}
 		return "UnknownTexType";
 	}

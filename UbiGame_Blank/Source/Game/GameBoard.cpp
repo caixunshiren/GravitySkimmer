@@ -72,7 +72,7 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 	//m_player->AddComponent<Game::PlayerSoundComponent>();
 
 	GameEngine::SoundComponent* const soundComponent = m_player->AddComponent<GameEngine::SoundComponent>();
-	GameEngine::SoundManager::SoundId bgm = soundComponent->LoadSoundFromFile("Resources/snd/bgm.wav");
+	GameEngine::SoundManager::SoundId bgm = soundComponent->LoadSoundFromFile("Resources/snd/bgm (2).wav");
 	soundComponent->PlaySound(bgm);
 
 }
@@ -185,7 +185,7 @@ void Game::GameBoard::CreateBackground()
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
 
 	background->SetPos(sf::Vector2f(250.f,250.f));
-	background->SetSize(sf::Vector2f(600.f, 600.f));
+	background->SetSize(sf::Vector2f(1200.f, 1200.f));
 
 	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
 		(background->AddComponent<GameEngine::SpriteRenderComponent>());
@@ -197,6 +197,6 @@ void Game::GameBoard::CreateBackground()
 	LinkedEntityComponent* linkedcmp = static_cast<LinkedEntityComponent*>
 		(background->AddComponent<LinkedEntityComponent>());
 	linkedcmp->SetFollowedEntity(m_player);
-	linkedcmp->SetFollowOff(sf::Vector2f(50.f, 0.f));
+	linkedcmp->SetFollowOff(sf::Vector2f(200.f, 0.f));
 
 }
