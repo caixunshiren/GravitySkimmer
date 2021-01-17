@@ -14,7 +14,7 @@ GameBoard::GameBoard()
 	: m_gridSize(32.f)
 {
 	Levelloader::GetInstance()->LoadLevel(this);
-	CreatePlayer(sf::Vector2i(150.f, 150.f));
+	CreatePlayer(sf::Vector2i(50.f, 250.f));
 }
 
 

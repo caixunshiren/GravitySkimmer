@@ -33,9 +33,9 @@ namespace Game
 			vy = 0.0;
 			ay = 1.0;
 			dx = 0.0;
-			vx = 200.0;
+			vx = 150.0;
 			lastframepressed = false;
-			g = 340.0;
+			g = 250.0;
 			state = 3;
 			s1 = 0;
 			s2 = 4;
