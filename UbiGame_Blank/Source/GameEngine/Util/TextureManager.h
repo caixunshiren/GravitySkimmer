@@ -17,6 +17,7 @@ namespace GameEngine
 			backWall,
 			spike,
 			level,
+			Background,
 			Count,
 		};
 	}	
@@ -31,6 +32,7 @@ namespace GameEngine
 		case eTexture::level: return "level.png"; //<-- The name of the image on disk
 		case eTexture::backWall: return "backwall.png"; //<-- The name of the image on disk
 		case eTexture::spike: return "spike-long.png";
+		case eTexture::Background: return "spike-long.png";
 		}
 		return "UnknownTexType";
 	}
