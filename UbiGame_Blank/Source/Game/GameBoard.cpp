@@ -99,6 +99,7 @@ void Game::GameBoard::CreateSpike(sf::Vector2i coords)
 {
 	GameEngine::Entity* spike = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(spike);
+	spike->SetEntityType(GameEngine::EEntityType::spike);
 
 	float spawnPosX = coords.x * m_gridSize + (m_gridSize / 2.f);
 	float spawnPosY = coords.y * m_gridSize + (m_gridSize / 2.f);
@@ -114,19 +115,19 @@ void Game::GameBoard::CreateSpike(sf::Vector2i coords)
 	spike->AddComponent<GameEngine::CollidableComponent>();
 }
 
-void GameBoard::UpdatePlayerOrientation() {
-	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
-	GameEngine::SpriteRenderComponent* render = m_player->GetComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
-
-	if (this_dir > 0 && last_dir < 0)
-	{
-		render->SetFillColor(sf::Color::Transparent);
-		render->SetTexture(GameEngine::eTexture::PlayerRun);
-	}  // <-- Assign the texture to this entity
-	else if(this_dir < 0 && last_dir > 0){
-		render->SetFillColor(sf::Color::Transparent);
-		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
-	}
-	//std::cout << this_dir;
-	last_dir = this_dir;
-}
+//void GameBoard::UpdatePlayerOrientation() {
+//	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
+//	GameEngine::SpriteRenderComponent* render = m_player->GetComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
+//
+//	if (this_dir > 0 && last_dir < 0)
+//	{
+//		render->SetFillColor(sf::Color::Transparent);
+//		render->SetTexture(GameEngine::eTexture::PlayerRun);
+//	}  // <-- Assign the texture to this entity
+//	else if(this_dir < 0 && last_dir > 0){
+//		render->SetFillColor(sf::Color::Transparent);
+//		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
+//	}
+//	//std::cout << this_dir;
+//	last_dir = this_dir;
+//}
