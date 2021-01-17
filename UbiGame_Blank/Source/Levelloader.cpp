@@ -29,8 +29,10 @@ void Levelloader::LoadLevel(GameBoard* board) {
             else if (pixelColor.r < 2 && pixelColor.g < 2 && pixelColor.b > 253) {
                 board->CreateSpike(sf::Vector2i(x, y));
             }
-
-            
+            else if (pixelColor.r < 2 && pixelColor.g > 253 && pixelColor.b < 2) {
+                board->CreateSpikeFliped(sf::Vector2i(x, y));
+            }
         }
     }
+    board->CreatePlayer((sf::Vector2i(50.f, 250.f)));
 }

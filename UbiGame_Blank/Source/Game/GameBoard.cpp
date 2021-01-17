@@ -14,7 +14,6 @@ GameBoard::GameBoard()
 	: m_gridSize(32.f)
 {
 	Levelloader::GetInstance()->LoadLevel(this);
-	CreatePlayer(sf::Vector2i(50.f, 250.f));
 }
 
 
@@ -113,6 +112,26 @@ void Game::GameBoard::CreateSpike(sf::Vector2i coords)
 	spriteRender->SetFillColor(sf::Color::Transparent);
 	spriteRender->SetTexture(GameEngine::eTexture::spike);
 	spike->AddComponent<GameEngine::CollidableComponent>();
+}
+
+void Game::GameBoard::CreateSpikeFliped(sf::Vector2i coords)
+{
+	GameEngine::Entity* spikeFlip = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(spikeFlip);
+	spikeFlip->SetEntityType(GameEngine::EEntityType::spike);
+
+	float spawnPosX = coords.x * m_gridSize + (m_gridSize / 2.f);
+	float spawnPosY = coords.y * m_gridSize + (m_gridSize / 2.f);
+
+	spikeFlip->SetPos(sf::Vector2f(spawnPosX, spawnPosY));
+	spikeFlip->SetSize(sf::Vector2f(m_gridSize, m_gridSize));
+
+	// Render
+	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+		(spikeFlip->AddComponent<GameEngine::SpriteRenderComponent>());
+	spriteRender->SetFillColor(sf::Color::Transparent);
+	spriteRender->SetTexture(GameEngine::eTexture::spikeFlip);
+	spikeFlip->AddComponent<GameEngine::CollidableComponent>();
 }
 
 
