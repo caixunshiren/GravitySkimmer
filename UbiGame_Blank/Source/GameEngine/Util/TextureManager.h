@@ -14,6 +14,7 @@ namespace GameEngine
 			PlayerRun, //<-- Add a new entry for our new texture
 			PlayerRunFlip,
 			Ground, //<-- ground texture
+			dirt,
 			backWall,
 			spike,
 			spikeFlip,
@@ -29,11 +30,12 @@ namespace GameEngine
 		{
 		case eTexture::PlayerRun: return "Character-combined.png"; //<-- The name of the image on disk
 		case eTexture::PlayerRunFlip: return "Character-run-flip.png"; //<-- The name of the image on disk
-		case eTexture::Ground: return "ground.png"; //<-- The name of the image on disk
+		case eTexture::Ground: return "grass-surface.png"; //<-- The name of the image on disk
+		case eTexture::dirt: return "dirt.png"; //<-- The name of the image on disk
 		case eTexture::level: return "level.png"; //<-- The name of the image on disk
 		case eTexture::backWall: return "backwall.png"; //<-- The name of the image on disk
-		case eTexture::spike: return "spike-long.png";
-		case eTexture::spikeFlip: return "spike-long-flip.png";
+		case eTexture::spike: return "woodSpike.png";
+		case eTexture::spikeFlip: return "woodSpikeFlip.png";
 		case eTexture::Background: return "Background.png";
 		}
 		return "UnknownTexType";
