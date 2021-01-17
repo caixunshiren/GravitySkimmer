@@ -22,7 +22,7 @@ void Levelloader::LoadLevel(GameBoard* board) {
         for (unsigned int x = 0; x < levelImage.getSize().x; x++) {
             sf::Color pixelColor = levelImage.getPixel(x, y);
             
-            board->CreateBackWall(sf::Vector2i(x, y));
+           // board->CreateBackWall(sf::Vector2i(x, y));
             if (pixelColor.r < 2 && pixelColor.g < 2 && pixelColor.b < 2) {
                 board->CreateGround(sf::Vector2i(x, y));
             }
