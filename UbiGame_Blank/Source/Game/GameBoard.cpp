@@ -16,10 +16,10 @@ using namespace Game;
 
 GameBoard::GameBoard()
 	: m_gridSize(32.f)
-	, LoadingTime(2.f)
+	, LoadingTime(10.f)
 {
 	Levelloader::GetInstance()->LoadLevel(this);
-	
+	CreatePlayer((sf::Vector2i(50.f, 250.f)));
 }
 
 
@@ -32,15 +32,15 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
-	if(!playerCreated){
+	/*if(!playerCreated){
 		if (LoadingTime > 0) {
 			LoadingTime -= GameEngine::GameEngineMain::GetTimeDelta();
 		}
 		else {
-			CreatePlayer((sf::Vector2i(50.f, 250.f)));
+			//CreatePlayer((sf::Vector2i(50.f, 250.f)));
 			playerCreated = true;
 		}
-	}
+	}*/
 	//UpdatePlayerOrientation();
 	// UpdateGround(dt);
 }
@@ -197,6 +197,6 @@ void Game::GameBoard::CreateBackground()
 	LinkedEntityComponent* linkedcmp = static_cast<LinkedEntityComponent*>
 		(background->AddComponent<LinkedEntityComponent>());
 	linkedcmp->SetFollowedEntity(m_player);
-	linkedcmp->SetFollowOff(sf::Vector2f(120.f, 0.f));
+	linkedcmp->SetFollowOff(sf::Vector2f(50.f, 0.f));
 
 }
