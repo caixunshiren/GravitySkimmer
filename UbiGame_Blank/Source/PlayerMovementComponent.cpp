@@ -10,6 +10,11 @@
 
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 
+#include "GameEngine/Util/CollisionManager.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include <vector>
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include <cstdlib>
 using namespace Game;
 
 
@@ -29,9 +34,21 @@ void PlayerMovementComponent::Update()
 }
 
 void PlayerMovementComponent::check_state() {
-    GameEngine::CollidablePhysicsComponent* hitbox = GetEntity()->GetComponent<GameEngine::CollidablePhysicsComponent>();
+    sf::Vector2f cur_p = GetEntity()->GetPos();
+    float cur_y = cur_p.y;
+    float delta = 0.5;
+    if (abs(cur_y - last_y) < delta) { 
+        if (ay > 0) { state = 1; }
 
+        else if (ay < 0) { state = 2; }
+    }
+    else {
+        if (ay > 0) { state = 3; }
 
+        else if (ay < 0) { state = 4; }
+    }
+
+    last_y = cur_y;
 }
 
 void PlayerMovementComponent::animateByState() {
