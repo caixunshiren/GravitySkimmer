@@ -71,7 +71,7 @@ void PlayerMovementComponent::Update()
         displacement.y += inputAmount * dt;
     }
     */
-
+    // std::cout << vy << std::endl;
     //Update Sprite
     if (animationFrameRateTimer < 0) {
         m_lastSpriteIndex++;

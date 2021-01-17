@@ -25,6 +25,6 @@ void PlayerCameraComponent::OnAddToWorld()
 void PlayerCameraComponent::Update()
 {
 	Component::Update();
-
-	GameEngine::CameraManager::GetInstance()->GetCameraView().setCenter(GetEntity()->GetPos());
+	sf::Vector2f offSet = sf::Vector2f(170.f, 0);
+	GameEngine::CameraManager::GetInstance()->GetCameraView().setCenter(GetEntity()->GetPos() + offSet);
 }
