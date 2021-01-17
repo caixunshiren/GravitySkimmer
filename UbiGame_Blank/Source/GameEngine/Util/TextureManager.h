@@ -12,7 +12,10 @@ namespace GameEngine
 		{
 			None = -1,
 			PlayerRun, //<-- Add a new entry for our new texture
+			PlayerRunFlip,
 			Ground, //<-- ground texture
+			backWall,
+			level,
 			Count,
 		};
 	}	
@@ -22,7 +25,10 @@ namespace GameEngine
 		switch (texture)
 		{
 		case eTexture::PlayerRun: return "Character-run.png"; //<-- The name of the image on disk
+		case eTexture::PlayerRunFlip: return "Character-run-flip.png"; //<-- The name of the image on disk
 		case eTexture::Ground: return "ground.png"; //<-- The name of the image on disk
+		case eTexture::level: return "level.jpeg"; //<-- The name of the image on disk
+		case eTexture::backWall: return "backwall.png"; //<-- The name of the image on disk
 		}
 		return "UnknownTexType";
 	}
