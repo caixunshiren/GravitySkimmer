@@ -148,7 +148,7 @@ void PlayerMovementComponent::PlayerControl() {
     if (colPhys->DidCollide() && colPhys->GetLastCollideEntity() != nullptr) {
         std::cout << "Player destroyed" << std::endl;
         GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
-        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->GetLastCollideEntity());
+        //GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->GetLastCollideEntity());
     }
     
     

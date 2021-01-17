@@ -65,7 +65,7 @@ void CollidablePhysicsComponent::Update()
 					pos.y += intersection.height;
 			}
 
-			if (colComponent->GetEntity()->GetEntityType() == EEntityType::ground) {
+			if (colComponent->GetEntity()->GetEntityType() == EEntityType::spike) {
 				m_didCollide = true;
 				m_lastCollideEntity = colComponent->GetEntity();
 				GetEntity()->SetPos(pos);

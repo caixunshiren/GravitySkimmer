@@ -10,6 +10,7 @@ namespace GameEngine
 		none,
 		player,
 		ground,
+		spike
 	};
 
 	class Entity
