@@ -1,5 +1,5 @@
 # Gravity Skimmer
-
+![Alt text](gameplay.jpeg)
 # HackTheNorth Challenge
 Built with Ubisoft Nest API.
 
