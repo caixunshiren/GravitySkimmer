@@ -73,12 +73,14 @@ void GameBoard::UpdatePlayerOrientation() {
 
 	if (this_dir > 0 && last_dir < 0)
 	{
-		render->SetFillColor(sf::Color::Transparent);
+		//render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRun);
+		//std::cout << 1;
 	}  // <-- Assign the texture to this entity
 	else if(this_dir < 0 && last_dir > 0){
-		render->SetFillColor(sf::Color::Transparent);
+		//render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
+		//std::cout << 2;
 	}
 	//std::cout << this_dir;
 	last_dir = this_dir;

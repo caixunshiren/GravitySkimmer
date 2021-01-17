@@ -209,9 +209,19 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\circle.png" />
+    <Image Include="Resources\img\backwall.png" />
+    <Image Include="Resources\img\Character-fall.png" />
+    <Image Include="Resources\img\Character-run-flip.png" />
+    <Image Include="Resources\img\Character-run.png" />
+    <Image Include="Resources\img\circle.png" />
+    <Image Include="Resources\img\ground.png" />
+    <Image Include="Resources\img\level.png" />
+    <Image Include="Resources\img\Player.png" />
+    <Image Include="Resources\img\spike.png" />
     <Image Include="Resources\Player.png" />
   </ItemGroup>
   <ItemGroup>
+    <None Include="Resources\img\PLACE_YOUR_RESOURCES_HERE" />
     <None Include="Resources\PLACE_YOUR_RESOURCES_HERE" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />

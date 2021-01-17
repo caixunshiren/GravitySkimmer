@@ -151,8 +151,36 @@
     <Image Include="Resources\circle.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\img\Character-run-flip.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\Character-run.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\backwall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\Character-fall.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\ground.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\circle.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\level.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\Player.png">
+      <Filter>Resource Files</Filter>
+    </Image>
+    <Image Include="Resources\img\spike.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PLACE_YOUR_RESOURCES_HERE" />
+    <None Include="Resources\img\PLACE_YOUR_RESOURCES_HERE" />
   </ItemGroup>
 </Project>
