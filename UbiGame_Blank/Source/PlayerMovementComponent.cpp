@@ -8,6 +8,13 @@
 
 #include <iostream>// dubug
 
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+
+#include "GameEngine/Util/CollisionManager.h"
+#include "GameEngine/EntitySystem/Entity.h"
+#include <vector>
+#include "GameEngine/EntitySystem/Components/CollidableComponent.h"
+#include <cstdlib>
 using namespace Game;
 
 
@@ -18,7 +25,110 @@ void PlayerMovementComponent::Update()
 	Component::Update();
     
 
+    check_state();
 
+    PlayerControl();
+    animateByState();
+
+    
+}
+
+void PlayerMovementComponent::check_state() {
+    sf::Vector2f cur_p = GetEntity()->GetPos();
+    float cur_y = cur_p.y;
+    float delta = 0.5;
+    if (abs(cur_y - last_y) < delta) { 
+        if (ay > 0) { state = 1; }
+
+        else if (ay < 0) { state = 2; }
+    }
+    else {
+        if (ay > 0) { state = 3; }
+
+        else if (ay < 0) { state = 4; }
+    }
+
+    last_y = cur_y;
+}
+
+void PlayerMovementComponent::animateByState() {
+    if (state == 1) {
+
+        if (animationFrameRateTimer < 0) {
+            s1++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s1 > 3) { s1 = 0; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s1, 0));
+        }
+
+    }
+    if (state == 2) {
+        if (animationFrameRateTimer < 0) {
+            s2++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s2 > 7) { s2 = 4; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s2, 0));
+        }
+
+    }
+    if (state == 3) {
+        if (animationFrameRateTimer < 0) {
+            s3++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s3 > 9) { s3 = 8; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s3, 0));
+        }
+
+    }
+    if (state == 4) {
+        if (animationFrameRateTimer < 0) {
+            s4++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s4 > 11) { s4 = 10; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s4, 0));
+        }
+
+    }
+
+}
+
+void PlayerMovementComponent::PlayerControl() {
     //Grabs how much time has passed since last frame
     const float dt = GameEngine::GameEngineMain::GetTimeDelta();
 
@@ -34,7 +144,7 @@ void PlayerMovementComponent::Update()
             dy = 0;
             lastframepressed = true;
         }
-        
+
     }
     else { lastframepressed = false; }
 
@@ -101,7 +211,6 @@ void PlayerMovementComponent::Update()
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
-    
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}

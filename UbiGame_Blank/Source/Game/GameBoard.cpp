@@ -27,7 +27,7 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
-	UpdatePlayerOrientation();
+	//UpdatePlayerOrientation();
 	// UpdateGround(dt);
 }
 
@@ -50,8 +50,6 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
 	m_player->AddComponent <PlayerCameraComponent>();
 
-	//get some important info
-	last_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
 }
 
 

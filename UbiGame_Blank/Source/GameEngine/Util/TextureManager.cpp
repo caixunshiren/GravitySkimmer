@@ -52,6 +52,8 @@ namespace TextureHelper
 			break;
 		case GameEngine::eTexture::PlayerRun:  return sf::Vector2f(32.f, 32.f);
 			break;
+		case GameEngine::eTexture::PlayerRunFlip:  return sf::Vector2f(32.f, 32.f);
+			break;
 		case GameEngine::eTexture::Ground:
 			break;
 		case GameEngine::eTexture::Count:

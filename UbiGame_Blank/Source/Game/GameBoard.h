@@ -26,10 +26,8 @@ namespace Game
 		//void UpdateGround(float dt);
 		void UpdatePlayerOrientation();
 		GameEngine::Entity* ground;
-		float dirA;
 
 		float m_gridSize;
-		float last_dir;
 	};
 }
 
