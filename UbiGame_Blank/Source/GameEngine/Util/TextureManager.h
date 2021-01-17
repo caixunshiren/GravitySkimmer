@@ -24,7 +24,7 @@ namespace GameEngine
 	{
 		switch (texture)
 		{
-		case eTexture::PlayerRun: return "Character-run.png"; //<-- The name of the image on disk
+		case eTexture::PlayerRun: return "Character-combined.png"; //<-- The name of the image on disk
 		case eTexture::PlayerRunFlip: return "Character-run-flip.png"; //<-- The name of the image on disk
 		case eTexture::Ground: return "ground.png"; //<-- The name of the image on disk
 		case eTexture::level: return "level.jpeg"; //<-- The name of the image on disk
