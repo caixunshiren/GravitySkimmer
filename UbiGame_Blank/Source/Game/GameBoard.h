@@ -14,17 +14,19 @@ namespace Game
 	public:
 		GameBoard();
 		virtual ~GameBoard();
-
+		void CreatePlayer(sf::Vector2i coords);
+		void CreateGround(sf::Vector2i coords);
 		void Update();		
 		bool IsGameOver() { return false; }
 
 	private:
-		void CreatePlayer();
 		GameEngine::Entity* m_player;
-		void CreateGround();
-		void UpdateGround(float dt);
+		//void UpdateGround(float dt);
 		void UpdatePlayerOrientation();
 		GameEngine::Entity* ground;
+		float dirA;
+
+		float m_gridSize;
 		float last_dir;
 	};
 }
