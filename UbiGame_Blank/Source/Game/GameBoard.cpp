@@ -1,8 +1,11 @@
 #include "GameBoard.h"
-
+#include "GameEngine/EntitySystem/Component.h"
+#include "GameEngine/Util/SoundManager.h"
+#include "GameEngine/EntitySystem/Components/SoundComponent.h"
 #include "GameEngine/GameEngineMain.h"
 #include "PlayerMovementComponent.h"
 #include "PlayerCameraComponent.h"
+#include "PlayerSoundComponent.h"
 #include "LinkedEntityComponent.h"
 #include "Levelloader.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
@@ -64,6 +67,13 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
 	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
 	m_player->AddComponent <PlayerCameraComponent>();
+
+	//sound
+	//m_player->AddComponent<Game::PlayerSoundComponent>();
+
+	GameEngine::SoundComponent* const soundComponent = m_player->AddComponent<GameEngine::SoundComponent>();
+	GameEngine::SoundManager::SoundId bgm = soundComponent->LoadSoundFromFile("Resources/snd/bgm.wav");
+	soundComponent->PlaySound(bgm, false);
 
 }
 
