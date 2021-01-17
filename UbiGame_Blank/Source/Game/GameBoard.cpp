@@ -6,7 +6,8 @@
 #include "Levelloader.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
-
+#include <SFML/Window/Keyboard.hpp>   //<-- Add the keyboard include in order to get keyboard inputs
+#include <iostream>
 using namespace Game;
 
 GameBoard::GameBoard()
@@ -26,6 +27,7 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	UpdatePlayerOrientation();
 	// UpdateGround(dt);
 }
 
@@ -47,6 +49,9 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 	m_player->AddComponent<Game::PlayerMovementComponent>();  // <-- Added the movement component to the player
 	m_player->AddComponent<GameEngine::CollidablePhysicsComponent>();
 	m_player->AddComponent <PlayerCameraComponent>();
+
+	//get some important info
+	last_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
 }
 
 
@@ -70,16 +75,18 @@ void Game::GameBoard::CreateGround(sf::Vector2i coords)
 }
 
 void GameBoard::UpdatePlayerOrientation() {
-	dirA = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
-	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
+	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
+	GameEngine::SpriteRenderComponent* render = m_player->GetComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
-	if (dirA > 0)
+	if (this_dir > 0 && last_dir < 0)
 	{
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRun);
 	}  // <-- Assign the texture to this entity
-	else {
+	else if(this_dir < 0 && last_dir > 0){
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
 	}
+	//std::cout << this_dir;
+	last_dir = this_dir;
 }

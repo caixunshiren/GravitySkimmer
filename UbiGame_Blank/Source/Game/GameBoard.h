@@ -27,6 +27,7 @@ namespace Game
 		float dirA;
 
 		float m_gridSize;
+		float last_dir;
 	};
 }
 
