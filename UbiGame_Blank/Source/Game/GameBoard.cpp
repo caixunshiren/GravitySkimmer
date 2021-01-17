@@ -35,6 +35,8 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 {
 	m_player = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
+	m_player->SetEntityType(GameEngine::EEntityType::player);
+
 
 	m_player->SetPos(sf::Vector2f(coords.x, coords.y));
 	m_player->SetSize(sf::Vector2f(50.0f, 50.0f));
@@ -59,6 +61,8 @@ void Game::GameBoard::CreateGround(sf::Vector2i coords)
 {
 	GameEngine::Entity* ground = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(ground);
+	ground->SetEntityType(GameEngine::EEntityType::ground);
+
 
 	float spawnPosX = coords.x * m_gridSize + (m_gridSize / 2.f);
 	float spawnPosY = coords.y * m_gridSize + (m_gridSize / 2.f);

@@ -6,6 +6,8 @@
 
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h"
 
+#include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
+
 #include <iostream>// dubug
 
 using namespace Game;
@@ -101,6 +103,13 @@ void PlayerMovementComponent::Update()
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
+    GameEngine::CollidablePhysicsComponent* colPhys = GetEntity()->GetComponent<GameEngine::CollidablePhysicsComponent>();
+    if (colPhys->DidCollide() && colPhys->GetLastCollideEntity() != nullptr) {
+        std::cout << "Player destroyed" << std::endl;
+        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(GetEntity());
+        GameEngine::GameEngineMain::GetInstance()->RemoveEntity(colPhys->GetLastCollideEntity());
+    }
+    
     
 }
 
