@@ -16,6 +16,7 @@ namespace Game
 		virtual ~GameBoard();
 		void CreatePlayer(sf::Vector2i coords);
 		void CreateGround(sf::Vector2i coords);
+		void CreateDirt(sf::Vector2i coords);
 		void CreateBackWall(sf::Vector2i coords);
 		void CreateSpike(sf::Vector2i coords);
 		void CreateSpikeFliped(sf::Vector2i coords);
@@ -31,6 +32,8 @@ namespace Game
 		GameEngine::Entity* ground;
 
 		float m_gridSize;
+		float LoadingTime;
+		bool playerCreated;
 	};
 }
 

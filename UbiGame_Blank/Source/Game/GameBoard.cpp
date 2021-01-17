@@ -16,9 +16,10 @@ using namespace Game;
 
 GameBoard::GameBoard()
 	: m_gridSize(32.f)
+	, LoadingTime(2.f)
 {
 	Levelloader::GetInstance()->LoadLevel(this);
-	CreateBackground();
+	
 }
 
 
@@ -31,6 +32,15 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	if(!playerCreated){
+		if (LoadingTime > 0) {
+			LoadingTime -= GameEngine::GameEngineMain::GetTimeDelta();
+		}
+		else {
+			CreatePlayer((sf::Vector2i(50.f, 250.f)));
+			playerCreated = true;
+		}
+	}
 	//UpdatePlayerOrientation();
 	// UpdateGround(dt);
 }
@@ -40,6 +50,8 @@ void GameBoard::CreatePlayer(sf::Vector2i coords)
 	m_player = new GameEngine::Entity();
 	GameEngine::GameEngineMain::GetInstance()->AddEntity(m_player);
 	m_player->SetEntityType(GameEngine::EEntityType::player);
+
+	CreateBackground();
 
 
 	m_player->SetPos(sf::Vector2f(coords.x, coords.y));
@@ -85,6 +97,27 @@ void Game::GameBoard::CreateGround(sf::Vector2i coords)
 	spriteRender->SetFillColor(sf::Color::Transparent);
 	spriteRender->SetTexture(GameEngine::eTexture::Ground);
 	ground->AddComponent<GameEngine::CollidableComponent>();
+}
+
+void Game::GameBoard::CreateDirt(sf::Vector2i coords)
+{
+	GameEngine::Entity* dirt = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(dirt);
+	//dirt->SetEntityType(GameEngine::EEntityType::ground);
+
+
+	float spawnPosX = coords.x * m_gridSize + (m_gridSize / 2.f);
+	float spawnPosY = coords.y * m_gridSize + (m_gridSize / 2.f);
+
+	dirt->SetPos(sf::Vector2f(spawnPosX, spawnPosY));
+	dirt->SetSize(sf::Vector2f(m_gridSize, m_gridSize));
+
+	// Render
+	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+		(dirt->AddComponent<GameEngine::SpriteRenderComponent>());
+	spriteRender->SetFillColor(sf::Color::Transparent);
+	spriteRender->SetTexture(GameEngine::eTexture::dirt);
+	//dirt->AddComponent<GameEngine::CollidableComponent>();
 }
 
 void Game::GameBoard::CreateBackWall(sf::Vector2i coords)

@@ -26,6 +26,9 @@ void Levelloader::LoadLevel(GameBoard* board) {
             if (pixelColor.r < 2 && pixelColor.g < 2 && pixelColor.b < 2) {
                 board->CreateGround(sf::Vector2i(x, y));
             }
+            if (pixelColor.r > 253 && pixelColor.g < 2 && pixelColor.b < 2) {
+                //board->CreateDirt(sf::Vector2i(x, y));
+            }
             else if (pixelColor.r < 2 && pixelColor.g < 2 && pixelColor.b > 253) {
                 board->CreateSpike(sf::Vector2i(x, y));
             }
@@ -34,5 +37,5 @@ void Levelloader::LoadLevel(GameBoard* board) {
             }
         }
     }
-    board->CreatePlayer((sf::Vector2i(50.f, 250.f)));
+   // board->CreatePlayer((sf::Vector2i(50.f, 250.f)));
 }
