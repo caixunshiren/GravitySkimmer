@@ -12,7 +12,8 @@ Built with Ubisoft Nest API.
 - [Code Overview](https://github.com/UbisoftToronto/HackersNest/wiki/GameEngine-Overview)
 - [Step By Step Tutorial](https://github.com/UbisoftToronto/HackersNest/wiki/Step-By-Step-Tutorial)
 
-#Gallery
+# Gallery
+
 ![Alt text](gameplay1.png?raw=true "Title")
 ![Alt text](gameplay2.png?raw=true "Title")
 ![Alt text](gameplay3.png?raw=true "Title")
