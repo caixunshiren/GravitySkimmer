@@ -6,7 +6,7 @@
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
 #include <SFML/Window/Keyboard.hpp>   //<-- Add the keyboard include in order to get keyboard inputs
-
+#include <iostream>
 using namespace Game;
 
 GameBoard::GameBoard()
@@ -25,6 +25,7 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
+	UpdatePlayerOrientation();
 	// UpdateGround(dt);
 }
 
@@ -68,7 +69,7 @@ void GameBoard::CreateGround() {
 
 void GameBoard::UpdatePlayerOrientation() {
 	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
-	GameEngine::SpriteRenderComponent* render = m_player->AddComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
+	GameEngine::SpriteRenderComponent* render = m_player->GetComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
 
 	if (this_dir > 0 && last_dir < 0)
 	{
@@ -79,6 +80,6 @@ void GameBoard::UpdatePlayerOrientation() {
 		render->SetFillColor(sf::Color::Transparent);
 		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
 	}
-
+	//std::cout << this_dir;
 	last_dir = this_dir;
 }
