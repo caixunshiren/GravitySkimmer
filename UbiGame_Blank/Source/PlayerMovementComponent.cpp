@@ -47,32 +47,7 @@ void PlayerMovementComponent::Update()
     dx = vx * dt;
     displacement.x += dx;
 
-    /*
-    //The amount of speed that we will apply when input is received
-    const float inputAmount = 100.0f;
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    {
-        displacement.x -= inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        displacement.x += inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-        displacement.y -= inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        displacement.y += inputAmount * dt;
-    }
-    */
-
-    //Update Sprite
+    /*//Update Sprite
     if (animationFrameRateTimer < 0) {
         m_lastSpriteIndex++;
         animationFrameRateTimer = animationFrameRateTimerMax;
@@ -89,19 +64,91 @@ void PlayerMovementComponent::Update()
     if (spriterender) {
         spriterender->SetTileIndex(sf::Vector2i(m_lastSpriteIndex, 0));
     }
+    */
 
-
-    //// Play Animation
-    //GameEngine::AnimationComponent* animComponent = GetEntity()->GetComponent<GameEngine::AnimationComponent>();
-    //if (animComponent) {
-    //    animComponent->SetIsLooping(true);
-    //    animComponent->PlayAnim(GameEngine::EAnimationId::PlayerRun);
-    //}
+    animateByState();
 
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
     
+}
+
+void PlayerMovementComponent::animateByState() {
+    if (state == 1) {
+
+        if (animationFrameRateTimer < 0) {
+            s1++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s1 > 3) { s1 = 0; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s1, 0));
+        }
+
+    }
+    if (state == 2) {
+        if (animationFrameRateTimer < 0) {
+            s2++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s2 > 7) { s2 = 4; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s2, 0));
+        }
+
+    }
+    if (state == 3) {
+        if (animationFrameRateTimer < 0) {
+            s3++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s3 > 9) { s3 = 8; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s3, 0));
+        }
+
+    }
+    if (state == 4) {
+        if (animationFrameRateTimer < 0) {
+            s4++;
+            animationFrameRateTimer = animationFrameRateTimerMax;
+        }
+        else {
+            animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
+        }
+
+        if (s4 > 11) { s4 = 10; }
+
+        GameEngine::SpriteRenderComponent* render = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
+        if (render)
+        {
+            render->SetTileIndex(sf::Vector2i(s4, 0));
+        }
+
+    }
+
 }
 
 void PlayerMovementComponent::OnAddToWorld() {}

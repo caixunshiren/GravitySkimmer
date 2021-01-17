@@ -8,6 +8,7 @@ namespace Game
 	public:
 		virtual void Update() override;
 		virtual void OnAddToWorld() override;
+		void animateByState();
 		float dy;
 		float vy;
 		float ay;
@@ -16,6 +17,14 @@ namespace Game
 		bool lastframepressed;
 		//gravity
 		float g;
+		int state; 
+
+		//animation states
+		int s1;
+		int s2;
+		int s3;
+		int s4;
+
 		PlayerMovementComponent() { // Constructor 
 			dy = 0.0;
 			vy = 0.0;
@@ -24,6 +33,11 @@ namespace Game
 			vx = 100.0;
 			lastframepressed = false;
 			g = 340.0;
+			state = 4;
+			s1 = 0;
+			s2 = 4;
+			s3 = 8;
+			s4 = 10;
 		}
 
 

@@ -212,6 +212,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   <ItemGroup>
     <Image Include="Resources\circle.png" />
     <Image Include="Resources\img\backwall.png" />
+    <Image Include="Resources\img\Character-combined.png" />
     <Image Include="Resources\img\Character-fall.png" />
     <Image Include="Resources\img\Character-run-flip.png" />
     <Image Include="Resources\img\Character-run.png" />

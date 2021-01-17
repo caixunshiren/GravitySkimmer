@@ -27,7 +27,7 @@ GameBoard::~GameBoard()
 void GameBoard::Update()
 {	
 	float dt = GameEngine::GameEngineMain::GetInstance()->GetTimeDelta();
-	UpdatePlayerOrientation();
+	//UpdatePlayerOrientation();
 	// UpdateGround(dt);
 }
 

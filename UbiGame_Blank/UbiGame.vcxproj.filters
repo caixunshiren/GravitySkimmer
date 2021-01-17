@@ -184,6 +184,9 @@
     <Image Include="Resources\img\spike.png">
       <Filter>Resource Files</Filter>
     </Image>
+    <Image Include="Resources\img\Character-combined.png">
+      <Filter>Resource Files</Filter>
+    </Image>
   </ItemGroup>
   <ItemGroup>
     <None Include="Resources\PLACE_YOUR_RESOURCES_HERE" />
