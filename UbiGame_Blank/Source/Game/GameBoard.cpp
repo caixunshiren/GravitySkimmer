@@ -3,6 +3,7 @@
 #include "GameEngine/GameEngineMain.h"
 #include "PlayerMovementComponent.h"
 #include "PlayerCameraComponent.h"
+#include "LinkedEntityComponent.h"
 #include "Levelloader.h"
 #include "GameEngine/EntitySystem/Components/SpriteRenderComponent.h" //<-- Remember to include the new component we will use
 #include "GameEngine/EntitySystem/Components/CollidablePhysicsComponent.h"
@@ -15,6 +16,7 @@ GameBoard::GameBoard()
 {
 	Levelloader::GetInstance()->LoadLevel(this);
 	CreatePlayer(sf::Vector2i(50.f, 250.f));
+	CreateBackground();
 }
 
 
@@ -115,4 +117,24 @@ void Game::GameBoard::CreateSpike(sf::Vector2i coords)
 	spike->AddComponent<GameEngine::CollidableComponent>();
 }
 
+void Game::GameBoard::CreateBackground()
+{
+	GameEngine::Entity* background = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(background);
 
+	background->SetPos(sf::Vector2f(250.f,250.f));
+	background->SetSize(sf::Vector2f(600.f, 600.f));
+
+	GameEngine::SpriteRenderComponent* render = static_cast<GameEngine::SpriteRenderComponent*>
+		(background->AddComponent<GameEngine::SpriteRenderComponent>());
+
+	render->SetTexture(GameEngine::eTexture::Background);
+	render->SetFillColor(sf::Color::Transparent);
+	render->SetZLevel(-1);
+
+	LinkedEntityComponent* linkedcmp = static_cast<LinkedEntityComponent*>
+		(background->AddComponent<LinkedEntityComponent>());
+	linkedcmp->SetFollowedEntity(m_player);
+	linkedcmp->SetFollowOff(sf::Vector2f(120.f, 0.f));
+
+}
