@@ -26,13 +26,14 @@ void Levelloader::LoadLevel(GameBoard* board) {
             //    std::cout << pixelColor.r << ", " << pixelColor.g << ", " << pixelColor.b << std::endl;
             //    //board->CreatePlayer(sf::Vector2i(x, y));
             //}
-            
-            if (pixelColor.r == 0 && pixelColor.g == 0 && pixelColor.b == 0) {
+            board->CreateBackWall(sf::Vector2i(x, y));
+            if (pixelColor.r < 2 && pixelColor.g < 2 && pixelColor.b < 2) {
                 board->CreateGround(sf::Vector2i(x, y));
             }
- /*           if (pixelColor.r == 255 && pixelColor.g == 255 && pixelColor.b == 255) {
-                board->CreateGround(sf::Vector2i(x, y));
-            }*/
+            else if (pixelColor.r < 2 && pixelColor.g < 2 && pixelColor.b > 253) {
+                board->CreateSpike(sf::Vector2i(x, y));
+            }
+
             
         }
     }

@@ -76,3 +76,57 @@ void Game::GameBoard::CreateGround(sf::Vector2i coords)
 	ground->AddComponent<GameEngine::CollidableComponent>();
 }
 
+void Game::GameBoard::CreateBackWall(sf::Vector2i coords)
+{
+	GameEngine::Entity* backWall = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(backWall);
+
+	float spawnPosX = coords.x * m_gridSize + (m_gridSize / 2.f);
+	float spawnPosY = coords.y * m_gridSize + (m_gridSize / 2.f);
+
+	backWall->SetPos(sf::Vector2f(spawnPosX, spawnPosY));
+	backWall->SetSize(sf::Vector2f(m_gridSize, m_gridSize));
+
+	// Render
+	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+		(backWall->AddComponent<GameEngine::SpriteRenderComponent>());
+	spriteRender->SetFillColor(sf::Color::Transparent);
+	spriteRender->SetTexture(GameEngine::eTexture::backWall);
+	spriteRender->SetZLevel(-1);
+}
+
+void Game::GameBoard::CreateSpike(sf::Vector2i coords)
+{
+	GameEngine::Entity* spike = new GameEngine::Entity();
+	GameEngine::GameEngineMain::GetInstance()->AddEntity(spike);
+
+	float spawnPosX = coords.x * m_gridSize + (m_gridSize / 2.f);
+	float spawnPosY = coords.y * m_gridSize + (m_gridSize / 2.f);
+
+	spike->SetPos(sf::Vector2f(spawnPosX, spawnPosY));
+	spike->SetSize(sf::Vector2f(m_gridSize, m_gridSize));
+
+	// Render
+	GameEngine::SpriteRenderComponent* spriteRender = static_cast<GameEngine::SpriteRenderComponent*>
+		(spike->AddComponent<GameEngine::SpriteRenderComponent>());
+	spriteRender->SetFillColor(sf::Color::Transparent);
+	spriteRender->SetTexture(GameEngine::eTexture::spike);
+	spike->AddComponent<GameEngine::CollidableComponent>();
+}
+
+void GameBoard::UpdatePlayerOrientation() {
+	float this_dir = m_player->GetComponent<Game::PlayerMovementComponent>()->ay;
+	GameEngine::SpriteRenderComponent* render = m_player->GetComponent<GameEngine::SpriteRenderComponent>(); //<-- Use the SpriteRenderComponent
+
+	if (this_dir > 0 && last_dir < 0)
+	{
+		render->SetFillColor(sf::Color::Transparent);
+		render->SetTexture(GameEngine::eTexture::PlayerRun);
+	}  // <-- Assign the texture to this entity
+	else if(this_dir < 0 && last_dir > 0){
+		render->SetFillColor(sf::Color::Transparent);
+		render->SetTexture(GameEngine::eTexture::PlayerRunFlip);
+	}
+	//std::cout << this_dir;
+	last_dir = this_dir;
+}

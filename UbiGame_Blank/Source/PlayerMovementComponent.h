@@ -32,16 +32,17 @@ namespace Game
 			vy = 0.0;
 			ay = 1.0;
 			dx = 0.0;
-			vx = 100.0;
+			vx = 200.0;
 			lastframepressed = false;
 			g = 340.0;
-			state = 1;
+			state = 3;
 			s1 = 0;
 			s2 = 4;
 			s3 = 8;
 			s4 = 10;
 		}
 
+		float last_y = 0;
 
 		int maxSpriteIndexRun = 3;
 		int m_lastSpriteIndex = 0;
