@@ -161,57 +161,6 @@ void PlayerMovementComponent::PlayerControl() {
     dx = vx * dt;
     displacement.x += dx;
 
-    /*
-    //The amount of speed that we will apply when input is received
-    const float inputAmount = 100.0f;
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::A))
-    {
-        displacement.x -= inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::D))
-    {
-        displacement.x += inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::W))
-    {
-        displacement.y -= inputAmount * dt;
-    }
-
-    if (sf::Keyboard::isKeyPressed(sf::Keyboard::S))
-    {
-        displacement.y += inputAmount * dt;
-    }
-    */
-    // std::cout << vy << std::endl;
-    //Update Sprite
-    if (animationFrameRateTimer < 0) {
-        m_lastSpriteIndex++;
-        animationFrameRateTimer = animationFrameRateTimerMax;
-    }
-    else {
-        animationFrameRateTimer -= GameEngine::GameEngineMain::GetTimeDelta();;
-    }
-
-    if (m_lastSpriteIndex > maxSpriteIndexRun) {
-        m_lastSpriteIndex = 0;
-    }
-
-    GameEngine::SpriteRenderComponent* spriterender = GetEntity()->GetComponent<GameEngine::SpriteRenderComponent>();
-    if (spriterender) {
-        spriterender->SetTileIndex(sf::Vector2i(m_lastSpriteIndex, 0));
-    }
-
-
-    //// Play Animation
-    //GameEngine::AnimationComponent* animComponent = GetEntity()->GetComponent<GameEngine::AnimationComponent>();
-    //if (animComponent) {
-    //    animComponent->SetIsLooping(true);
-    //    animComponent->PlayAnim(GameEngine::EAnimationId::PlayerRun);
-    //}
-
 
     //Update the entity position
     GetEntity()->SetPos(GetEntity()->GetPos() + displacement);
