@@ -18,6 +18,8 @@ namespace Game
 		void CreateGround(sf::Vector2i coords);
 		void CreateBackWall(sf::Vector2i coords);
 		void CreateSpike(sf::Vector2i coords);
+		void CreateSpikeFliped(sf::Vector2i coords);
+
 		void CreateBackground();
 		void Update();		
 		bool IsGameOver() { return false; }
@@ -25,7 +27,7 @@ namespace Game
 	private:
 		GameEngine::Entity* m_player;
 		//void UpdateGround(float dt);
-		void UpdatePlayerOrientation();
+		//void UpdatePlayerOrientation();
 		GameEngine::Entity* ground;
 
 		float m_gridSize;
