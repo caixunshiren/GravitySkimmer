@@ -165,6 +165,7 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
   <ItemGroup>
     <ClCompile Include="LinkedEntityComponent.cpp" />
     <ClCompile Include="PlayerCameraComponent.cpp" />
+    <ClCompile Include="PlayerSoundComponent.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.cpp" />
     <ClCompile Include="Source\GameEngine\Util\CameraManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.cpp" />
@@ -186,11 +187,14 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClCompile Include="Source\GameEngine\GameEngineMain.cpp" />
     <ClCompile Include="Source\GameEngine\Util\TextureManager.cpp" />
     <ClCompile Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.cpp" />
+    <ClCompile Include="Source\PlayerCameraComponent.cpp" />
     <ClCompile Include="Source\PlayerMovementComponent.cpp" />
+    <ClCompile Include="Source\PlayerSoundComponent.cpp" />
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="LinkedEntityComponent.h" />
     <ClInclude Include="PlayerCameraComponent.h" />
+    <ClInclude Include="PlayerSoundComponent.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\TextRenderComponent.h" />
     <ClInclude Include="Source\GameEngine\Util\CameraManager.h" />
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\ParticleComponent.h" />
@@ -211,7 +215,9 @@ XCOPY "$(SolutionDir)..\SFML-2.5.0\bin" "$(TargetDir)" /S /Y /I</Command>
     <ClInclude Include="Source\GameEngine\EntitySystem\Components\SpriteRenderComponent.h" />
     <ClInclude Include="Source\Levelloader.h" />
     <ClInclude Include="Source\LinkedEntityComponent.h" />
+    <ClInclude Include="Source\PlayerCameraComponent.h" />
     <ClInclude Include="Source\PlayerMovementComponent.h" />
+    <ClInclude Include="Source\PlayerSoundComponent.h" />
   </ItemGroup>
   <ItemGroup>
     <Image Include="Resources\circle.png" />
